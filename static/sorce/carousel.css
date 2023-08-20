@@ -28,8 +28,8 @@ header nav a img{
 }
 
 .carousel-caption h1{
-  color: gray;
-  text-shadow: 3px 3px black; 
+  color: white;
+  text-shadow: 2px 2px black; 
   font-size: 72px;
   font-family: "poppins" sans-serif;
 }
