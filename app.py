@@ -1,4 +1,23 @@
 from flask import Flask, render_template
+import os
+
+curent_dir = os.getcwd()
+imge_path = curent_dir + "/static/imagesForPage"
+buttons = os.listdir(imge_path)
+
+list_of_images = []
+
+for filles in buttons:
+  path = imge_path + "/" + filles
+  find_imgs = os.listdir(path)
+  for imgs in find_imgs:
+    pri = imgs.split(".")[0]
+    c = f"{filles}/{imgs}"
+
+    list_of_images.append({"btn_nm": filles, "img_path" : c, "price": pri})
+
+#print("butt", buttons)
+#print(list_of_images)
 
 app = Flask(__name__)
 
@@ -10,7 +29,9 @@ def sarjaan():
 
 @app.route("/project.html")
 def projects():
-  return render_template("includes/project.html")
+  return render_template("includes/project.html",
+                         fil_buttons=buttons,
+                         images_file=list_of_images)
 
 
 if __name__ == "__main__":
